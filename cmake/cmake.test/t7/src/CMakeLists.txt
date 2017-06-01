@@ -1,0 +1,36 @@
+﻿AUX_SOURCE_DIRECTORY(. SRC_LIST)
+ADD_EXECUTABLE(T7 ${SRC_LIST})
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/BIN)
+
+configure_file(
+"${PROJECT_SOURCE_DIR}/config.h.in"
+"${PROJECT_SOURCE_DIR}/config.h"
+)
+
+SET(CMAKE_INCLUDE_PATH "../../T3")
+MESSAGE(STATUS "CMAKE_INCLUDE_PATH :" ${CMAKE_INCLUDE_PATH})
+
+MESSAGE(STATUS " VERSION:" ${CMAKE_MAJOR_VERSION} "." ${CMAKE_MINOR_VERSION} "." ${CMAKE_PATCH_VERSION})
+MESSAGE(STATUS "SYSTEM INFO:" ${CMAKE_SYSTEM} " VER:" ${CMAKE_SYSTEM_VERSION} " PROCESS:" ${CMAKE_SYSTEM_PROCESSOR})
+# 是否使用自己的设置
+option (USE_OPTION
+       "Use Option test" ON)
+# 是否加入 
+if (USE_OPTION)
+ # include_directories ("${PROJECT_SOURCE_DIR}/math")
+ # add_subdirectory (math)  
+ # set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+endif (USE_OPTION)
+# TEST FOREACH
+FOREACH(F RANGE 10)
+MESSAGE(${F})
+ENDFOREACH(F)
+
+
+FOREACH(A RANGE 3 21 3)
+MESSAGE(${A})
+ENDFOREACH(A)
+
+# 检测系统是否有支持工程需要的函数
+include (CheckFunctionExists)
+check_function_exists(printf HAVE_PRINTF)

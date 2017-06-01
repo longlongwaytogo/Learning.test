@@ -1,0 +1,10 @@
+
+project(HELLO)
+add_subdirectory(src)
+add_subdirectory(inc)
+
+message("1231213111111111")
+				  
+
+
+

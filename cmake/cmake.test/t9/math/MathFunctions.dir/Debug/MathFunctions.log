@@ -1,0 +1,23 @@
+﻿生成启动时间为 2017/5/25 14:49:29。
+     1>项目“I:\co\Learning.test.git\cmake\cmake.test\t9\math\MathFunctions.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“MathFunctions.dir\Debug\MathFunctions.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       CustomBuild:
+         Building Custom Rule I:/co/Learning.test.git/cmake/cmake.test/t9/math/CMakeLists.txt
+         CMake does not need to re-run because I:/co/Learning.test.git/cmake/cmake.test/t9/math/CMakeFiles/generate.stamp is up-to-date.
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /II:\co\Learning.test.git\cmake\cmake.test\t9\math /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"MathFunctions.dir\Debug\\" /Fd"MathFunctions.dir\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt MathFunctions.cc
+         MathFunctions.cc
+     1>MathFunctions.cc(10): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+     1>MathFunctions.cc(18): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+       Lib:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"I:\co\Learning.test.git\cmake\cmake.test\t9\math\Debug\MathFunctions.lib" /NOLOGO MathFunctions.dir\Debug\MathFunctions.obj   /machine:X86
+         MathFunctions.vcxproj -> I:\co\Learning.test.git\cmake\cmake.test\t9\math\Debug\MathFunctions.lib
+       FinalizeBuildStatus:
+         正在删除文件“MathFunctions.dir\Debug\MathFunctions.unsuccessfulbuild”。
+         正在对“MathFunctions.dir\Debug\MathFunctions.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“I:\co\Learning.test.git\cmake\cmake.test\t9\math\MathFunctions.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.14

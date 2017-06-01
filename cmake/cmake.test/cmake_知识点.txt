@@ -1,0 +1,20 @@
+1、include目录 lib目录  
+2、生成lib库（动态、静态）
+3、link lib库
+4、生成exe
+5、dll导出注意事项
+6、内部构建和外部构建
+7、配置信息
+8、findpakage用法
+9、command用法
+10、install 功能
+11、项目依赖项
+12、cmake自带module查找模块
+13、cmake函数
+14、cmake 宏命令
+15、检测函数是否可用
+16、 python 脚本结合，自动生成cmake
+17、cmake 自动搜索路径
+18、构建类型：CMAKE_BUILD_TYPE
+19、打包安装
+20、自动生成源文件
