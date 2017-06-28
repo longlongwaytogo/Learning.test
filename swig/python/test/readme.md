@@ -1,4 +1,4 @@
-#python利用swig调用C、C++编写的模块  
+# python利用swig调用C、C++编写的模块  
 1. 下载swigwin,解压即可。
 2. 编写c++代码如下：  
     源文件
