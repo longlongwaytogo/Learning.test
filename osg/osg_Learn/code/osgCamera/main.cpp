@@ -4,6 +4,7 @@
 #include <osgDB/ReadFile>  
 #include <osg/Node>  
 #include <osg/Matrix>
+#include <osg/Notify>
 
 namespace MatrixTest
 {
@@ -76,6 +77,8 @@ namespace MatrixTest
 	//	著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 }
+
+static std::ofstream g_log("out.log");
 int main(int argc, char** argv)
 {
 	/*
@@ -105,6 +108,21 @@ int main(int argc, char** argv)
 	float m2[6] = { 1,2,3,4,5,6 };
 	osgViewer::Viewer view;
 
+
+	osg::WinDebugNotifyHandler* pWin32Handler = new osg::WinDebugNotifyHandler();
+	osg::setNotifyHandler(pWin32Handler);
+	osg::setNotifyLevel(osg::INFO);
+	OSG_INFO << "test osg info:";
+	
+	std::ostream& os = osg::notify(osg::INFO);
+	os.rdbuf(g_log.rdbuf());
+	std::cout.rdbuf(g_log.rdbuf());
+
+
+	std::cout << "test osg out" << std::endl;
+	OSG_INFO << "test osg info:111";
+	
+	
 	view.setSceneData(osgDB::readNodeFile("cow.osg"));
 
 	view.getCamera()->setViewport(0, 0, 1280, 678);
@@ -151,6 +169,6 @@ int main(int argc, char** argv)
 		projMat.getPerspective(fov, aspectRatio, zNear, zFar);
 
 	}
-
+	g_log.flush();
 	return 0;
 }
