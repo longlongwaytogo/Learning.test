@@ -4,6 +4,11 @@ recording my learning .
 #2017/8/30
 ## target 1:
 .net
+http://www.runoob.com/csharp/csharp-basic-syntax.html
+1.C# 教程
+2.C# 简介
+3.C# 环境
+4.C# 程序结构
 
 
 

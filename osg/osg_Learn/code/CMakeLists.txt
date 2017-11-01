@@ -8,3 +8,4 @@ message(${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(osgCamera)
 add_subdirectory(osgPagedLod)
+add_subdirectory(osgPick)

@@ -31,3 +31,6 @@
 *.out
 *.app
 cmake-master-43d9b296f5688b865bc2c40ea0af3b042047dfe8
+/java/Design_pattern/DesignPattern/nbproject/private/
+/java/Design_pattern/DesignPattern/build/
+/java/Design_pattern/DesignPattern/dist/
