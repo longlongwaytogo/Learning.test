@@ -1,5 +1,5 @@
 @echo off
-call "D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64     
+call "E:\Program Files (x86)\vs2015\VC\vcvarsall.bat" x64     
 set compilerflags=/Od /Zi /EHsc
 set linkerflags=/OUT:hello.exe
 cl.exe %compilerflags% helloworld.cpp /link %linkerflags%
