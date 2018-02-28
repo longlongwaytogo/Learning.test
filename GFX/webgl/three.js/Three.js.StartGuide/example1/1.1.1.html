@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <script src="../lib/three.js" > </script> 
+        
+        <script> 
+            function init() {
+                var renderer = new THREE.WebGLRenderer({
+                    canvas:document.getElementById("mainCanvas")
+                });
+                renderer.setClearColor(0x00000000);
+
+                var scene = new THREE.Scene();
+
+                var camera = new THREE.PerspectiveCamera(45,4 / 3,1,1000);
+                camera.position.set(0,0,5);
+                camera.lookAt(new THREE.Vector3(0,0,0));
+                scene.add(camera);
+
+                var material = new THREE.MeshBasicMaterial({
+                    color:0xffffff // white 
+                });
+
+                // plane                   
+                var planeGeom = new THREE.PlaneGeometry(1.5,1.5);
+                var plane = new THREE.Mesh(planeGeom,material);
+                plane.position.x = 1;
+                scene.add(plane);
+
+                // triangle
+                var triGeom = new THREE.Geometry();
+                triGeom.vertices = [new THREE.Vector3(0,-0.8,0),
+                                    new THREE.Vector3(-2,-0.8,0),
+                                    new THREE.Vector3(-1,0.8,0)];
+                triGeom.faces.push(new THREE.Face3(0,2,1));
+                var triangle = new THREE.Mesh(triGeom,material);
+                scene.add(triangle);
+
+                renderer.render(scene,camera);
+ 
+            }
+        </script>
+    </head>
+    <body onload="init()" >
+        <canvas id="mainCanvas" width="400px" height = "300px" > </canvas>
+    </body> 
+
+</html>
