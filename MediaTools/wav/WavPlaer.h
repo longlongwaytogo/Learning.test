@@ -18,5 +18,8 @@ public:
 
 	bool stop(); // Í£Ö¹
 
+	bool resume();// ¼ÌÐø
+
+
 };
 

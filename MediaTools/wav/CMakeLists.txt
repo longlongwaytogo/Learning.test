@@ -1,1 +1,1 @@
-add_executable(WavPlayer main.cpp)
+add_executable(WavPlayer main.cpp WavPlaer.cpp WavPlaer.h)

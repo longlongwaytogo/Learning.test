@@ -28,3 +28,20 @@ bool WavPlaer::play(std::string fileName,int playType /*= PLAY_NORMAL*/)
 	
 	return ret;
 }
+
+bool WavPlaer::pause()
+{
+	return true;
+}
+
+bool WavPlaer::stop()
+{
+	return true;
+
+}
+
+bool WavPlaer::resume()
+{
+	return true;
+
+}
