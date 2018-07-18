@@ -32,3 +32,6 @@ FORMS    += mainwindow.ui
 
 RESOURCES += \
     res.qrc
+
+DISTFILES += \
+    CMakeLists.txt
