@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,13 +18,48 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>80</y>
+      <y>10</y>
       <width>231</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>本程序主要演示Qt+和VS+CMake创建项目 </string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>40</y>
+      <width>331</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>C1</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>C2</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>C3</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>250</y>
+      <width>321</width>
+      <height>192</height>
+     </rect>
     </property>
    </widget>
   </widget>
