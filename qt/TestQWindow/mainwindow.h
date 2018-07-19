@@ -5,7 +5,7 @@
 #include <QString>
 #include <QAction>
 #include <QKeySequence>
-
+#include <QMenu>
 
 
 namespace Ui {
@@ -23,12 +23,16 @@ public:
     void  initUI();
 
     void addMenuItem(QAction* action,QString btnName,QString tip,QKeySequence::StandardKey key);
-
-
+    void deleteItem();
+    void addItem();
 public slots:
     void open();
+private slots:
+    void on_tableWidget_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::MainWindow *ui;
+    QMenu          *popMenu;
 };
 
 #endif // MAINWINDOW_H

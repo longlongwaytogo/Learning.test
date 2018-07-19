@@ -1,0 +1,49 @@
+ <html>
+	<meta charset = "utf-8" >
+	</meta>
+
+	<head>
+		<script src="jquery-3.3.1.min.js"></script>
+		<script src="qwebchannel.js"></script>
+	</head>
+		<div>
+			<span>name:</span><input type="text" id = "name" />
+				<br/>
+			<span>age:</span><input type="text" id = "age" />
+			
+		</div>
+		
+		<script>
+			'use strict'; // js 不要使用严格模式也可以
+			var updateName = function(text)
+			{
+				$("#name").val(text);
+				
+				// 调用qt函数, 必须使用共有slots
+				window.bridge.slot_debug("update name:" + text);
+			}
+			
+			var updateAge = function(text)
+			{
+				$("#age").val(text);
+				window.bridge.slot_debug("update age:" + text);
+			}
+			
+
+                        new QWebChannel(qt.webChannelTransport,//注意 webChannelTransport 开头字母小写
+			function(channel){
+				var person = channel.objects.person;
+				window.bridge = person; //为了在其它位置使用
+				
+				// 直接使用QObject 派生类的属性
+				updateName(person.name);
+				updateAge(person.age);
+				
+				// 链接 QT的信号到 JS函数
+				person.sig_nameChanged.connect(updateName);
+				person.sig_ageChanged.connect(updateAge);
+			}
+			);
+			
+		</script>
+</html>
