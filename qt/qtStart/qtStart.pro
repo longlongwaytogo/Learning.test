@@ -7,7 +7,7 @@ SOURCES += main.cpp
 
 RESOURCES += qml.qrc
 
-LIBS += -LE:/project/QT/usbcan_info/ -lControlCAN
+
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
