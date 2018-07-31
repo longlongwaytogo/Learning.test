@@ -33,13 +33,15 @@ MESSAGE( STATUS  "Qt5Widgets_INCLUDE_DIR: ${Qt5Widgets_INCLUDE_DIRS}" )
 #INCLUDE_DIRECTORIES("D:\\Qt\\Qt5.6.1\\5.6\\msvc2015_64\\include\\QtOpenGL")
 LINK_DIRECTORIES(${Qt5OpenGL_LIBRARY_DIR})
 LINK_LIBRARIES(${Qt5OpenGL_LIBRARIES})
+
 aux_source_directory(. SRC)
 SET(SourceGroup_Sky "${CMAKE_CURRENT_SOURCE_DIR}/skyBox.h" "${CMAKE_CURRENT_SOURCE_DIR}/skyBox.cpp")
 #SET(SourceGroup_Sky "skyBox.h" "skyBox.cpp")
 MESSAGE("sourceGroup:${SourceGroup_Sky}")
 SOURCE_GROUP(Sky FILES ${SourceGroup_Sky})
-add_executable(${subProjName} ${SourceGroup_Sky} ${SRC}  )
-
+	
+ADD_EXECUTABLE(${subProjName}  ${SourceGroup_Sky} ${SRC})
+#SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS ON)
 SET_TARGET_PROPERTIES(${subProjName} PROPERTIES FOLDER "QtApp")
 
 

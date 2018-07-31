@@ -1,6 +1,29 @@
 # Osg learn examples
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
+
+
+#--------------------------------------------
+#find_package( OpenThreads )
+#find_package( osg )
+#find_package( osgDB )
+#find_package( osgUtil )
+#find_package( osgViewer )
+#macro( config_project PROJNAME LIBNAME )
+#include_directories( ${${LIBNAME}_INCLUDE_DIR} )
+#target_link_libraries( ${PROJNAME} ${${LIBNAME}_LIBRARY} )
+#endmacro()
+#add_executable( MyProject main.cpp )
+#config_project( MyProject OPENTHREADS )
+#config_project( MyProject OSG )
+#config_project( MyProject OSGDB )
+#config_project( MyProject OSGUTIL )
+#config_project( MyProject OSGVIEWER )
+#--------------------------------------------
+
+
+#--------------------------------------------------------
+
 #project OsgLearning
 PROJECT(OsgLearning)
 
@@ -10,7 +33,7 @@ SET(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "E:\\project\\osg\\OpenSceneGraph-3.4
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 
-FIND_PACKAGE(OpenSceneGraph 3.4.0 REQUIRED osgViewer osgDB osgGA osgUtil)
+FIND_PACKAGE(OpenSceneGraph 3.4.0 REQUIRED osgViewer osgDB osgGA osgUtil osgText)
 
 
 
