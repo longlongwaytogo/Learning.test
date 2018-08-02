@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////
-// @destription:learn osg3.0Guide capture 4: geometry
+// @destription:learn osg3.0 Guide capture 4: geometry
 // @author: longlongwaytogo
 // @date: 2018/7/31
 // @link: http://osg3.readthedocs.io/en/latest/ch04.html 
@@ -103,7 +103,9 @@ int main()
         pMT->setMatrix(osg::Matrix::rotate(osg::PI_2,osg::Vec3(1,0,0)) * osg::Matrix::translate(osg::Vec3(3,0,2.5)));
         osg::Geode* pTeapotGeode = new osg::Geode;
         pMT->addChild(pTeapotGeode);
-        pTeapotGeode->addDrawable(new TeapotDrawable());
+        osg::Drawable* pDrawable = new TeapotDrawable();
+        pDrawable->setUseDisplayList(false);
+        pTeapotGeode->addDrawable(pDrawable);
         root->addChild(pMT);
     }
     root->addChild(geode);
