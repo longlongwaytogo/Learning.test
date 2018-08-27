@@ -3,10 +3,10 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 PROJECT(TestQWindow)
 
 
-# °üº¬µ±Ç°Ä¿Â¼ÎÄ¼þ
+# åŒ…å«å½“å‰ç›®å½•æ–‡ä»¶
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-# ¿ªÆô×Ô¶¯±àÒëQT×ÊÔ´
+# å¼€å¯è‡ªåŠ¨ç¼–è¯‘QTèµ„æº
 SET(CMAKE_AUTOMOC ON)
 #SET(CMAKE_AUTOUIC ON)   
 #SET(CMAKE_AUTORCC ON)
@@ -27,7 +27,7 @@ qt5_add_resources(ALL_QRC ${QRC_FILES})
 # files
 aux_source_directory(. SRC_FILES)
 
-# Éú³Éexe Ìí¼Ó WIN32£¬¿ÉÒÔ½ûÓÃÄ¬ÈÏÉú²úµÄ¿ØÖÆÌ¨´°¿Ú
+# ç”Ÿæˆexe æ·»åŠ  WIN32ï¼Œå¯ä»¥ç¦ç”¨é»˜è®¤ç”Ÿäº§çš„æŽ§åˆ¶å°çª—å£
 add_executable(${PROJECT_NAME} WIN32 ${SRC_FILES} ${ALL_UI} ${ALL_QRC} )
 
 #link 

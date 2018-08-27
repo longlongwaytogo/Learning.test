@@ -1,0 +1,16 @@
+{
+    "name" : "first chrome extension test",
+    "version" : "1.0.0",
+    "manifest_version" : 2,
+    "icons": {
+        "48" : "images/get_started48.png"
+    },
+    "description" : "我的一个chrome测试",
+    "permissions": ["https://secure.flickr.com/"],
+    "browser_action": {
+       
+            "default_icon" : "images/get_started48.png",
+            "default_popup": "popup.html"
+       
+    }
+}
