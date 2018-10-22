@@ -58,8 +58,8 @@ GLSL  着色语言中的一些知识笔记
 
 
 
-reference:
-[https://www.cnblogs.com/sanjin/p/3580331.html]()  
-[https://www.khronos.org/registry/OpenGL-Refpages/es2.0/xhtml/glBindAttribLocation.xml]()
-[https://blog.csdn.net/jeffasd/article/details/78209965]()
-[https://blog.csdn.net/racehorse/article/details/6634830]()
+reference:  
+[https://www.cnblogs.com/sanjin/p/3580331.html]()    
+[https://www.khronos.org/registry/OpenGL-Refpages/es2.0/xhtml/glBindAttribLocation.xml]()  
+[https://blog.csdn.net/jeffasd/article/details/78209965]()  
+[https://blog.csdn.net/racehorse/article/details/6634830]()  
