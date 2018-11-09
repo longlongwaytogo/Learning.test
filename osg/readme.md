@@ -1,0 +1,5 @@
+[osg 3.6.3 binrary download ](http://objexx.com/OpenSceneGraph/OpenSceneGraph-3.6.3-VC2017-64-Release.7z) 
+[osg wangrui github wiki](https://github.com/xarray/osgRecipes/wiki)
+[wangrui github repo](https://github.com/xarray/osgRecipes) 
+[osg 相关扩展](https://blog.csdn.net/wang15061955806/article/details/51003803)  
+[osg3 beginner guide book_cn](https://osg3.readthedocs.io/en/latest/index.html)

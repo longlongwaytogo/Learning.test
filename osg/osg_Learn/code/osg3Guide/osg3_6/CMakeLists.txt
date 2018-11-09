@@ -9,6 +9,7 @@ endmacro()
 
 #-------------------------------------------------------------
 
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}\\comm)
 
 aux_source_directory(. SRC)
 add_executable(${subProjName} ${SRC} )
