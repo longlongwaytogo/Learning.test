@@ -36,6 +36,23 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 FIND_PACKAGE(OpenSceneGraph 3.4.0 REQUIRED osgViewer osgDB osgGA osgUtil osgText)
 
 
+SET(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "add a postfix for Debug mode, usually d on windows")
+
+
+# set cmake polycy
+IF(COMMAND CMAKE_POLICY)
+	CMAKE_POLICY(SET CMP0003 NEW)
+ENDIF(COMMAND CMAKE_POLICY)
+
+# add necessary definition and c++ compiling flags as you wish
+IF(WIN32)
+	IF(MSVC)
+		ADD_DEFINITIONS(-D_SCL_SECURE_NO_WARNINGS)
+		ADD_DEFINITIONS(-D_CRT_SECURE_NO_DEPRECATE)
+	ENDIF(MSVC)
+ELSE(WIN32)
+	SET(CMAKE_CXX_FLAGS "-W -Wall -Wno-unused")
+ENDIF(WIN32)
 
 #find_package(Qt5 COMPONENTS  QTOPENGL)
 # add link lib

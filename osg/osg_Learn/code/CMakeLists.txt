@@ -22,3 +22,6 @@ add_subdirectory(osgViewerMFC)
 add_subdirectory(osgqFont)
 # add_subdirectory(osgQtBrowser)
 #add_subdirectory(osgQtGraphicView)
+
+# cookbook 
+add_subdirectory(osg3cookBook)
