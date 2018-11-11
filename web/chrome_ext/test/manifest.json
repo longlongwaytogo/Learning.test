@@ -14,9 +14,10 @@
 		"default_icon" : "logo.png"
 		},
 	"content_scripts" : [ 
-	{ 
-		"matches" : ["https://www.baidu.com/*"],
-      "js": ["script.js"]
-	}
-	]
+		{ 
+			"matches" : ["https://www.baidu.com/*"],
+			"js": ["script.js"]
+		}
+	],
+	"devtools_page" : "index.html"
 }
