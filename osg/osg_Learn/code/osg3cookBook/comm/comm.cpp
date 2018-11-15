@@ -63,7 +63,15 @@ namespace osgComm
         return animation.release();
     }
 
-    bool PickHander::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa, osg::Object*, osg::NodeVisitor*)
+    osg::AnimationPathCallback* createAnimationCallback(float radius, float time)
+    {
+        osg::ref_ptr<osg::AnimationPath> path = createAnimationPath(radius,time);
+        osg::ref_ptr<osg::AnimationPathCallback> apcb = new osg::AnimationPathCallback;
+        apcb->setAnimationPath( path.get() );
+        return apcb.release();    
+    }
+
+    bool PickHandler::handle(const osgGA::GUIEventAdapter& ea,osgGA::GUIActionAdapter& aa, osg::Object*, osg::NodeVisitor*)
     {
         if(ea.getEventType() != osgGA::GUIEventAdapter::RELEASE || ea.getButton() != osgGA::GUIEventAdapter::LEFT_MOUSE_BUTTON ||
             !(ea.getModKeyMask() & osgGA::GUIEventAdapter::MODKEY_CTRL) )

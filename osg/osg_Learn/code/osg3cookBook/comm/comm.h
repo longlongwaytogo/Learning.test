@@ -22,7 +22,9 @@ namespace osgComm
     */
     osg::AnimationPath* createAnimationPath(float radius,float time);
 
-    class PickHander :public osgGA::GUIEventHandler
+    osg::AnimationPathCallback* createAnimationCallback(float radius, float time);
+
+    class PickHandler :public osgGA::GUIEventHandler
     {
     public:
         virtual void doUserOperations(const osgUtil::LineSegmentIntersector::Intersection& in) = 0;

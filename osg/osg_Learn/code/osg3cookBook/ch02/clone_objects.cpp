@@ -12,7 +12,7 @@
 
 #include "comm/comm.h"
 
-class SetShapeColorHandler :public osgComm::PickHander
+class SetShapeColorHandler :public osgComm::PickHandler
 {
     virtual void doUserOperations(const osgUtil::LineSegmentIntersector::Intersection& in)
     {

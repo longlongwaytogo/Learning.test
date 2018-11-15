@@ -12,7 +12,7 @@
 
 #include "comm/comm.h"
 
-class RemoveShapeHandler :public osgComm::PickHander
+class RemoveShapeHandler :public osgComm::PickHandler
 {
  
     virtual void doUserOperations(const osgUtil::LineSegmentIntersector::Intersection& in)
