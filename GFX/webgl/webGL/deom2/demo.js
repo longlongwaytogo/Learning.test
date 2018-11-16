@@ -22,9 +22,7 @@ function configureTexture(image) {
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-   // gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
-    // gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, image);
     //gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 240, 100, 0, gl.RGB, gl.UNSIGNED_BYTE, image);
     gl.generateMipmap(gl.TEXTURE_2D);
    // gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER,gl.NEAREST_MIPMAP_LINEAR);
@@ -81,20 +79,17 @@ function init() {
             render();
         }
         image.crossOrigin="";
-        //image.src = "1.png";
-       //image.src = "I:\\co\\Learning.test.git\\GFX\\webgl\\webGL\\deom2\\OpenGL-log.png";
-       //image.src="I:\\co\\Learning.test.git\\GFX\\webgl\\webGL\\deom2tiles.jpg";
-       image.src="https://raw.githubusercontent.com/longlongwaytogo/Learning.test/master/GFX/webgl/webGL/deom2/ypos.jpg";
-       
        //image.crossOrigin = "anonymous";
-      //image.crossOrigin = "Anonymous";
+       //image.src = "I:\\co\\Learning.test.git\\GFX\\webgl\\webGL\\deom2\\tiles.jpg";
+       //image.src="tiles.jpg";
+       image.src="https://raw.githubusercontent.com/longlongwaytogo/Learning.test/master/GFX/webgl/webGL/deom2/ypos.jpg";
        //image.src="https://www.khronos.org/assets/uploads/ceimg/made/assets/uploads/apis/WebGL_100px_June16_180_75.png"
-      // image.src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542279463670&di=471eaa742343829cfa4dd53b818202d3&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F16%2F91%2F94%2F87Z58PIC3zb_1024.jpg";
+       // image.src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542279463670&di=471eaa742343829cfa4dd53b818202d3&imgtype=0&src=http%3A%2F%2Fpic.qiantucdn.com%2F58pic%2F16%2F91%2F94%2F87Z58PIC3zb_1024.jpg";
+       
        gl.activeTexture(gl.TEXTURE0);
-        var uTexture = gl.getUniformLocation(program, "uTexture");
-        gl.uniform1i(uTexture,0);
-        uFrame = gl.getUniformLocation(program, "uFrame");
-
+       var uTexture = gl.getUniformLocation(program, "uTexture");
+       gl.uniform1i(uTexture,0);
+       uFrame = gl.getUniformLocation(program, "uFrame");
 }
 
 var frameNumber = 0;
