@@ -40,3 +40,7 @@ createPrj(ch03-15-select_point ch03/select_point.cpp)
 createPrj(ch03-17-vertex_displacement ch03/vertex_displacement.cpp)
 
 
+# ch04 
+createPrj(ch04-01-multiple-screen ch04/multiple_screen)
+createPrj(ch04-02-power-wall ch04/power_wall.cpp)
+
