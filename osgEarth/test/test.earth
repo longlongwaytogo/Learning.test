@@ -1,0 +1,12 @@
+<!-- test osgearth -->
+
+<map name="MyMap" type="geocentric" version="2">
+	
+	<image name ="bluemarble" driver = "gdal">
+		<url>/data/world.tif</url>
+	</image>
+	
+	<model name ="model" driver="simple">
+		<url>cow.osg</url>
+	</model>
+</map>

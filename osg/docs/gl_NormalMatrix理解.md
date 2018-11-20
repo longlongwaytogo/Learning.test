@@ -5,6 +5,10 @@
    则：		
 		G: = M逆矩阵的转置矩阵
 		
+	若： M是正交矩阵，M的逆矩阵= M的转置矩阵
+	所以，当没有Scale变换时，（只存在Rotate、Transform变换）
+	ModelView = G 
+		
 		http://www.songho.ca/opengl/gl_normaltransform.html
 		https://www.cnblogs.com/hefee/p/3817397.html
 		

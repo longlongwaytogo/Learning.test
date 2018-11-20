@@ -1,0 +1,14 @@
+<map name ="Elevation" type="geocentric" version="2">
+	<!-- Add a base map of the blue marble data -->
+	<image name = "blueMarble" driver = "gdal" >
+	<url> TrueMarble.8km.5400x2700.tif</url>
+	</image>
+	
+	<!-- add SRTM data --> 
+	<elevation name="srtm" driver = "gdal" >
+		<url> I:\\co\\Learning.test.git\\osg\\osg_Learn\\code\\osg3cookBook\\data\\srtm\\srtm_62_02.tif</url>
+		<url> I:\\co\\Learning.test.git\\osg\\osg_Learn\\code\\osg3cookBook\\data\\srtm\\srtm_62_03.tif</url>
+		<url> I:\\co\\Learning.test.git\\osg\\osg_Learn\\code\\osg3cookBook\\data\\srtm\\srtm_62_04.tif</url>
+		<url> I:\\co\\Learning.test.git\\osg\\osg_Learn\\code\\osg3cookBook\\data\\srtm\\srtm_62_05.tif</url>
+	</elevation>
+</map>
