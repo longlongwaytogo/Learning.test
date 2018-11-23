@@ -1,0 +1,1 @@
+https://docs.microsoft.com/zh-cn/visualstudio/designers/how-to-create-a-geometry-based-gradient-shader

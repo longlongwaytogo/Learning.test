@@ -44,3 +44,12 @@ createPrj(ch03-17-vertex_displacement ch03/vertex_displacement.cpp)
 createPrj(ch04-01-multiple-screen ch04/multiple_screen)
 createPrj(ch04-02-power-wall ch04/power_wall.cpp)
 
+
+#ch08
+createPrj(ch08-01-merge-geometry ch08/merge_geom.cpp)
+createPrj(ch08-02-compress-texture ch08/compress_texture.cpp)
+createPrj(ch08-03-share-objects ch08/share_objects.cpp)
+createPrj(ch08-04-config-pager ch08/config_pager.cpp)
+createPrj(ch08-05-Maze-cull ch08/Maze.cpp)
+
+

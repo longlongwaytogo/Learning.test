@@ -6,8 +6,40 @@
 #include <osgViewer/Viewer>
 #include <osgUtil/LineSegmentIntersector>
 
+#include <io.h>
 namespace osgComm
 {
+   
+    std::string g_mediaPath;
+    std::string& getMediaPath()
+    {
+       
+        static bool bInit = false;
+        if(!bInit)
+        {
+            std::string path = "code/osg3cookBook/data";
+            std::string parentStr = "../";
+            std::string parentPath = "";
+            int i = 0;
+            while(i < 5) // 5级别回溯，查找资源路径
+            {
+                std::string findPath = parentPath + path;
+                if(_access(findPath.c_str(),0) == 0)
+                {
+                    g_mediaPath = findPath;
+                    break;
+                }
+                parentPath += parentStr;
+                i++;
+
+            }
+            g_mediaPath +="/";
+
+            bInit = true;
+        }
+      return g_mediaPath;
+        
+    }
 
     osg::Camera* createHudCamera(double left, double right, double botton, double top) // opengl left corner is orign
     {
@@ -102,6 +134,25 @@ namespace osgComm
         return false;
     }
 
-  
+ 
+    float RandValue(float min, float max)
+    {
+        return (min + rand())/(RAND_MAX + 1.0) *(max - min);
+    }
+
+    osg::Vec3 RandVector(float min, float max)
+    {
+       return  osg::Vec3(RandValue(min,max),RandValue(min,max),RandValue(min,max));
+    }
+
+    osg::Matrix RandMatrix(float min, float max)
+    {
+        osg::Vec3 pos = RandVector(min,max);
+        osg::Vec3 rot = RandVector(-osg::PI,osg::PI);
+
+       return osg::Matrix::rotate(rot[0],osg::X_AXIS,rot[1],osg::Y_AXIS,rot[2],osg::Z_AXIS) *
+              osg::Matrix::translate(pos);
+
+    }
 
 }

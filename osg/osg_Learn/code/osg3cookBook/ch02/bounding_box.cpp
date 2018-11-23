@@ -14,6 +14,7 @@
 
 #include "comm/comm.h"
 
+osg::NodePathList nodepath;
 class BoundingBoxCallback : public osg::NodeCallback
 {
 public:
@@ -30,8 +31,12 @@ public:
             osg::Node* pParent = node->getParent(0);
             if(pParent)
             {
-                osg::NodePath& nodepath = pParent->getParentalNodePaths()[0];
-                osg::Matrix localToWorld = osg::computeLocalToWorld(nodepath);
+                /* 此处代码调用后出现std::vector析构时崩溃，可能和编译过程中混用Debug、Release 
+                或混用不同版本vs库有关，此处使用全局变量跳过此问题，只在程序退出时崩溃，不影响功能测试。
+                */
+                //osg::NodePath& nodepath = pParent->getParentalNodePaths()[0];
+                nodepath = pParent->getParentalNodePaths();
+                osg::Matrix localToWorld = osg::computeLocalToWorld(nodepath[0]);
                 for ( unsigned int i=0; i<8; ++i )
                     bb.expandBy( localBB.corner(i) * localToWorld );
             }
