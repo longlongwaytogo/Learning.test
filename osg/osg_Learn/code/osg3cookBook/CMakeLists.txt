@@ -2,7 +2,7 @@
 SET(osg3book "osg3CookBook")
 
 MACRO(createPrj prjName file)
-
+MESSAGE(${file})
 ADD_EXECUTABLE(${prjName} ${file})
 TARGET_LINK_LIBRARIES(${prjName} osgComm)
 SET_TARGET_PROPERTIES(${prjName} PROPERTIES FOLDER "${osg3book}") 
@@ -53,3 +53,11 @@ createPrj(ch08-04-config-pager ch08/config_pager.cpp)
 createPrj(ch08-05-Maze-cull ch08/Maze.cpp)
 
 
+#ch10
+
+createPrj(ch10-01-delaunay-triangulator ch10/delaunay.cpp)
+SET(file ch10/SIMP_Main.cpp ch10/SIMP_ReaderWriter.h ch10/SIMP_ReaderWriter.cpp)
+createPrj(ch10-02-simp-loader ${file})
+#ADD_LIBRARY(osgdb_simp ch10/SIMP_ReaderWriter.cpp)
+
+createPrj(ch10-03-meta-data ch10/meta_data.cpp)
