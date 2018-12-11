@@ -1,0 +1,2 @@
+ bjam --toolset=msvc-10.0  --stagedir=E:\project\ogre\2.1\dependcy\src\boost_1_62_0\x86\  --with-thread  
+  bjam --toolset=msvc-10.0  --stagedir=E:\project\ogre\2.1\dependcy\src\boost_1_62_0\x86\  --with-date
