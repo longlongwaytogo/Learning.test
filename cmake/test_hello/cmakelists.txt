@@ -1,10 +1,31 @@
 
 project(HELLO)
+
+cmake_minimum_required(VERSION 2.8)
 add_subdirectory(src)
 add_subdirectory(inc)
 
-message("1231213111111111")
-				  
+set(_source_path  "${CMAKE_SOURCE_DIR}/src/main.cpp")
 
+message(${_source_path})
+set(_source_re "")
+get_filename_component(_source_rel ${_source_path} DIRECTORY       )
+
+
+message(source:"${_source_rel}")
+
+# 定义一个宏，显式声明了两个参数hello,world
+macro(argn_test hello world)
+	MESSAGE(STATUS ARGV=${ARGV})
+	MESSAGE(STATUS ARGN=${ARGN})
+	MESSAGE(STATUS ARGV0=${ARGV0})
+	MESSAGE(STATUS ARGV1=${ARGV1})
+	MESSAGE(STATUS ARGV2=${ARGV2})
+	MESSAGE(STATUS ARGV3=${ARGV3})
+	MESSAGE(STATUS ARGC=${ARGC})
+endmacro()
+# 调用宏时传入4个参数
+argn_test(TOM JERRY SUSAN BERN)
+ 
 
 
