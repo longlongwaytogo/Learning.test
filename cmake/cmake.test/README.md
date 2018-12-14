@@ -322,3 +322,7 @@ t6示例如何使用自定义的cmake模块(编写了自定义的FindHELLO.cmake
 参考SET和AUX\_SOURCE\_DIRECTORY用法
 
 **建议**：在Project根目录先建立build,然后在build文件夹内运行cmake ..，这样就不会污染源代码, 如果不想要这些自动生成的文件了，只要简单的删除build文件夹就可以
+
+
+
+[http://www.cnblogs.com/lsgxeva/p/9454443.html]()
