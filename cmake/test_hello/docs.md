@@ -11,3 +11,8 @@
 		CMAKE_LIBRARY_OUTPUT_DIRECTORY: DLL对应的导出库lib
 		CMAKE_RUNTIME_OUTPUT_DIRECTORY: DLL 、exe
 		
+		
+		
+		
+		https://cmake.org/cmake-tutorial/
+		
