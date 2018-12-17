@@ -2,6 +2,10 @@
 project(HELLO)
 
 cmake_minimum_required(VERSION 2.8)
+
+include_directories(${PROJECT_BINARY_DIR})
+include_directories(${PROJECT_SOURCE_DIR}/inc)
+
 add_subdirectory(src)
 add_subdirectory(inc)
 
@@ -9,10 +13,26 @@ set(_source_path  "${CMAKE_SOURCE_DIR}/src/main.cpp")
 
 message(${_source_path})
 set(_source_re "")
-get_filename_component(_source_rel ${_source_path} DIRECTORY       )
+get_filename_component(_source_rel ${_source_path} DIRECTORY )
 
+#======================== add define ============================
 
-message(source:"${_source_rel}")
+option(FOO_ENABLE "Enable Foo" ON)
+if(FOO_ENABLE)
+  set(FOO_STRING "foo")
+ 
+  else()
+   set(FOO_STRING2 "foo2")
+  endif()
+  
+ option(FOO_ENABLE2 "Enable Foo2" ON)
+ 
+ SET(Tutorial_VERSION_MAJOR 2)
+ SET(Tutorial_VERSION_MINOR 3)
+ 
+configure_file(foo.h.in foo.h @ONLY)
+#======================== add define ============================
+
 
 # 定义一个宏，显式声明了两个参数hello,world
 macro(argn_test hello world)
