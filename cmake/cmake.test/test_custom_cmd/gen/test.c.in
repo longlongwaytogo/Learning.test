@@ -1,0 +1,13 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+void test() {
+
+printf("hello");
+
+}
+
+void main()
+{
+	test();
+}
