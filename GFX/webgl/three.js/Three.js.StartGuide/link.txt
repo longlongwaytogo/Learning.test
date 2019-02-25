@@ -3,3 +3,5 @@ https://github.com/Ovilia/ThreeExample.js/blob/master/Chapter2/2.4.1.html
 
 
 http://hypnosnova.github.io/
+
+Three.js 入门指南:http://zhangwenli.com/ThreeExample.js
