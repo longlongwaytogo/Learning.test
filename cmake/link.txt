@@ -1,1 +1,2 @@
 https://github.com/wzpan/cmake-demo.git
+cmake-generator: https://github.com/uniflare/CMakeGen.git
