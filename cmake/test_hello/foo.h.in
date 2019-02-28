@@ -1,0 +1,7 @@
+#cmakedefine FOO_ENABLE
+#cmakedefine FOO_ENABLE2
+#cmakedefine FOO_STRING "@FOO_STRING@"
+#cmakedefine FOO_STRING2 "@FOO_STRING2@"
+
+#define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@

@@ -1,0 +1,10 @@
+# gen/CMakeLists.txt
+# 使用 OUTPUT 方式，创建一个新文件作为输出，注，COMMAND之间不要有多余空格，否则执行失败。
+add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/test.c 
+	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/test.c.in ${CMAKE_CURRENT_BINARY_DIR}/test.c 
+MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/test.c.in COMMENT "Generating test.c")
+
+# 将test.c 和gen_test_c 进行关联，这个是一个不生成目标的工程，用于建立关联
+add_custom_target(gen_test_c DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/test.c)
+
+

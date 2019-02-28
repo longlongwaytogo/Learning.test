@@ -52,6 +52,29 @@ createPrj(ch08-03-share-objects ch08/share_objects.cpp)
 createPrj(ch08-04-config-pager ch08/config_pager.cpp)
 createPrj(ch08-05-Maze-cull ch08/Maze.cpp)
 
+FIND_PACKAGE(osgQt)
+FIND_PACKAGE(Qt5Widgets REQUIRED QT5OPENGL)
+FIND_PACKAGE(Qt5OpenGL REQUIRED)
+
+
+INCLUDE_DIRECTORIES(${OSGQT_INCLUDE_DIR})
+link_directories(${OSGQT_LIBRARY_DIR})
+LINK_LIBRARIES( ${OSGQT_LIBRARIES} )
+
+INCLUDE_DIRECTORIES(${Qt5Widgets_INCLUDE_DIRS})
+LINK_DIRECTORIES(${Qt5Widgets_LIBRARY_DIR})
+LINK_LIBRARIES(${Qt5Widgets_LIBRARIES})
+
+
+INCLUDE_DIRECTORIES(${Qt5OpenGL_INCLUDE_DIR})
+MESSAGE( STATUS  "Qt5OpenGL_dir: ${Qt5OpenGL_INCLUDE_DIRS}" )
+MESSAGE( STATUS  "Qt5Widgets_INCLUDE_DIR: ${Qt5Widgets_INCLUDE_DIRS}" )
+#INCLUDE_DIRECTORIES("D:\\Qt\\Qt5.6.1\\5.6\\msvc2015_64\\include\\QtOpenGL")
+LINK_DIRECTORIES(${Qt5OpenGL_LIBRARY_DIR})
+LINK_LIBRARIES(${Qt5OpenGL_LIBRARIES})
+
+# ch09
+createPrj(ch09-01-osgQt ch09/osg_qt.cpp)
 
 #ch10
 
@@ -61,3 +84,4 @@ createPrj(ch10-02-simp-loader ${file})
 #ADD_LIBRARY(osgdb_simp ch10/SIMP_ReaderWriter.cpp)
 
 createPrj(ch10-03-meta-data ch10/meta_data.cpp)
+
