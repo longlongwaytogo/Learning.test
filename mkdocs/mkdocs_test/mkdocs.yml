@@ -1,0 +1,7 @@
+site_name: jiese365
+pages:
+    - Home: 'index.md'
+    - About: 'about.md'
+    - 测试2: 'xinxiangguangming/2.md'
+    - 测试3: 'xinxiangguangming/1.md'
+theme : readthedocs
