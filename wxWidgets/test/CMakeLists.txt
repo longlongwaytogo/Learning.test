@@ -1,0 +1,4 @@
+ 
+
+ADD_EXECUTABLE(MyTest WIN32 main.cpp main.h)
+TARGET_LINK_LIBRARIES(MyTest ${wxWidgets_LIBRARIES})
