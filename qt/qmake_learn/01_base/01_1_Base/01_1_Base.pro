@@ -9,6 +9,8 @@ CONFIG += c++11 console
 QT -= gui
 CONFIG -= app_bundle
 CONFIG += debug_and_release
+#CONFIG += debug
+#CONFIG += release 
 
 # The following define makes your compiler warn you if you use any
 # feature of Qt which has been marked as deprecated (the exact warnings
@@ -23,3 +25,5 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Input
 SOURCES += main.cpp
+
+message($${CONFIG})
