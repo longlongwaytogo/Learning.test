@@ -4,7 +4,7 @@ CONFIG += cmdline precompile_header
 QT +=widgets
 
 # use Precompiled headers (PCH)
-PRECOMPILED_HEADER = stable.h
+#PRECOMPILED_HEADER = stable.h
 
 HEADERS = stable.h \
 		  mydialog.h \

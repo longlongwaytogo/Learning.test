@@ -1,2 +1,7 @@
 https://github.com/wzpan/cmake-demo.git
 cmake-generator: https://github.com/uniflare/CMakeGen.git
+
+
+
+
+https://cognitivewaves.wordpress.com/cmake-and-visual-studio/
