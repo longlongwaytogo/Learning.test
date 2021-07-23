@@ -1,0 +1,52 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "cppgdb",
+      "name": "QtApp",
+      "project": "CMakeLists.txt",
+      "projectTarget": "QtApp",
+      "comment": "了解如何配置远程调试。有关详细信息，请参阅 http://aka.ms/vslinuxdebug",
+      "debuggerConfiguration": "gdb",
+      "args": [],
+      "env": {
+        "DISPLAY": ":0.0"
+      }
+    },
+    {
+      "type": "cppgdb",
+      "name": "osgTest",
+      "project": "CMakeLists.txt",
+      "projectTarget": "osgTest",
+      "comment": "了解如何配置远程调试。有关详细信息，请参阅 http://aka.ms/vslinuxdebug",
+      "debuggerConfiguration": "gdb",
+      "args": [
+        "$HOME/ThirdParty/OSG/1M_Cube.FBX"
+      ],
+      "env": {
+        "DISPLAY": ":0.0"
+      }
+    },
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "QtApp.exe",
+      "name": "QtApp.exe"
+    },
+
+    {
+        "type": "default",
+        "project": "CMakeLists.txt",
+        "projectTarget": "osgTest.exe (D:\\dev\\cp\\QtCMakeProj\\bin\\windows\\x64\\osgTest.exe)",
+        "name": "osgTest.exe (D:\\dev\\cp\\QtCMakeProj\\bin\\windows\\x64\\osgTest.exe)",
+        "args": [
+            "lz.osg"
+        ],
+        "env": {
+            "PATH": "${env.THIRDPARTY_ROOT}\\publish\\windows\\x64\\Debug\\bin;${env.PATH};${workspaceRoot}"
+        }
+    }
+    
+  ]
+}

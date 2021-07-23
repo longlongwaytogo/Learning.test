@@ -1,0 +1,12 @@
+#ifndef COMMONDIALOG_GLOBAL_H
+#define COMMONDIALOG_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(COMMONDIALOG_LIBRARY)
+#  define COMMONDIALOG_EXPORT Q_DECL_EXPORT
+#else
+#  define COMMONDIALOG_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // COMMONDIALOG_GLOBAL_H

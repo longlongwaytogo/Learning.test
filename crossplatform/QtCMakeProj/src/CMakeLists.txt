@@ -1,0 +1,4 @@
+add_subdirectory(QCityPlanApp)
+add_subdirectory(KernelCommon)
+add_subdirectory(QtApp)
+add_subdirectory(osgTest)

@@ -1,0 +1,3 @@
+设置系统环境变量
+CP_ROOT=D:\dev\cp\QCityPlan_QCreator\CityPlan
+CP_THIRDPARTY=D:\dev\cp\QCityPlan_QCreator\ThirdParty
