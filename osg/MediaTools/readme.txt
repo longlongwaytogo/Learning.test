@@ -1,0 +1,1 @@
+音频播放有很多中方式，常见的有windows系统自带的playsound，但只支持wav格式， mci 播放器 可以播放mp3
