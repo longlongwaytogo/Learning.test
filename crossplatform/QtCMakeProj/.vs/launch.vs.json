@@ -34,19 +34,17 @@
       "projectTarget": "QtApp.exe",
       "name": "QtApp.exe"
     },
-
     {
-        "type": "default",
-        "project": "CMakeLists.txt",
-        "projectTarget": "osgTest.exe (D:\\dev\\cp\\QtCMakeProj\\bin\\windows\\x64\\osgTest.exe)",
-        "name": "osgTest.exe (D:\\dev\\cp\\QtCMakeProj\\bin\\windows\\x64\\osgTest.exe)",
-        "args": [
-            "lz.osg"
-        ],
-        "env": {
-            "PATH": "${env.THIRDPARTY_ROOT}\\publish\\windows\\x64\\Debug\\bin;${env.PATH};${workspaceRoot}"
-        }
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "osgTest.exe (D:\\dev\\cp\\QtCMakeProj\\bin\\windows\\x64\\osgTest.exe)",
+      "name": "osgTest.exe (D:\\dev\\cp\\QtCMakeProj\\bin\\windows\\x64\\osgTest.exe)",
+      "args": [
+        "lz.osg"
+      ],
+      "env": {
+        "PATH": "${env.THIRDPARTY_ROOT}\\publish\\windows\\x64\\Debug\\bin;${env.PATH};${workspaceRoot}"
+      }
     }
-    
   ]
 }
