@@ -45,5 +45,13 @@ ${KLAYGE_ROOT}/External/scope-lite/include
 ${KLAYGE_ROOT}/External/GSL/include
  )
 
- link_libraries(${KLAYGE_ROOT}/KlayGE/lib/win_x64/KlayGE_Core_vc142_d.lib)
-add_subdirectory(examples/first)
+ link_libraries(${KLAYGE_ROOT}/KlayGE/lib/win_x64/KlayGE_Core_vc142_d.lib
+ ${KLAYGE_ROOT}/KFL/lib/win_x64/KFL_vc142_d.lib
+ )
+
+add_definitions(-DKLAYGE_ROOT="${KLAYGE_ROOT}")
+add_definitions(-DKLAYGE_BINARY_ROOT="${KLAYGE_ROOT}/KlayGE/bin/win_x64")
+
+add_subdirectory(examples/Tutor1)
+add_subdirectory(examples/Tutor2)
+add_subdirectory(examples/DrawAxis)

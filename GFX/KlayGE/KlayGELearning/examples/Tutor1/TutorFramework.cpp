@@ -8,6 +8,7 @@ TutorFramework::TutorFramework()
 void TutorFramework::OnCreate()
 {
     font_ = KlayGE::SyncLoadFont("gkai00mp.kfont");
+
 }
 
 void TutorFramework::DoUpdateOverlay()
@@ -30,13 +31,26 @@ KlayGE::uint32_t TutorFramework::DoUpdate(KlayGE::uint32_t pass)
     re.CurFrameBuffer()->Clear(KlayGE::FrameBuffer::CBM_Color | KlayGE::FrameBuffer::CBM_Depth,
         KlayGE::Color(0.2f, 0.4f, 0.6f, 1), 1.0f, 0);
 
-    KlayGE::Color clear_clr(0.2f, 0.4f, 0.6f, 1);
+#define USE_OSG_CLEAR 1
+#if USE_OSG_CLEAR
+    KlayGE::Color clear_clr(0.2f, 0.2f, 0.6f, 1);
     if (KlayGE::Context::Instance().Config().graphics_cfg.gamma)
     {
-        clear_clr.r() = 0.029f;
-        clear_clr.g() = 0.133f;
-        clear_clr.b() = 0.325f;
+        float gamma = 2.2f;
+        clear_clr.r() = pow(0.20f, gamma);
+        clear_clr.g() = pow(0.20f, gamma);
+        clear_clr.b() = pow(0.40f, gamma);
+
     }
+#else
+     KlayGE::Color clear_clr(0.2f, 0.4f, 0.6f, 1);
+    if (KlayGE::Context::Instance().Config().graphics_cfg.gamma)
+    {
+          clear_clr.r() = 0.029f;
+          clear_clr.g() = 0.133f;
+          clear_clr.b() = 0.325f;
+    }
+#endif 
     re.CurFrameBuffer()->Clear(KlayGE::FrameBuffer::CBM_Color | KlayGE::FrameBuffer::CBM_Depth, clear_clr, 1.0f, 0);
     return KlayGE::App3DFramework::URV_NeedFlush | KlayGE::App3DFramework::URV_Finished;
 }
