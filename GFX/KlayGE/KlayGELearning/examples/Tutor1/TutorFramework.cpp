@@ -37,9 +37,9 @@ KlayGE::uint32_t TutorFramework::DoUpdate(KlayGE::uint32_t pass)
     if (KlayGE::Context::Instance().Config().graphics_cfg.gamma)
     {
         float gamma = 2.2f;
-        clear_clr.r() = pow(0.20f, gamma);
-        clear_clr.g() = pow(0.20f, gamma);
-        clear_clr.b() = pow(0.40f, gamma);
+        clear_clr.r() = pow(0.26f, gamma);
+        clear_clr.g() = pow(0.26f, gamma);
+        clear_clr.b() = pow(0.425f, gamma);
 
     }
 #else

@@ -1,0 +1,464 @@
+#include "InputCaps.hpp"
+#include <KlayGE/UI.hpp>
+ 
+#include <KlayGE/InputFactory.hpp>
+#include <iterator>
+#include <sstream>
+#include <vector>
+#include <memory>
+
+using namespace std;
+
+namespace
+{
+	using namespace KlayGE;
+	std::wstring key_name[] =
+	{
+		L"",
+		L"Escape",
+		L"1",
+		L"2",
+		L"3",
+		L"4",
+		L"5",
+		L"6",
+		L"7",
+		L"8",
+		L"9",
+		L"0",
+		L"Minus",
+		L"Equals",
+		L"BackSpace",
+		L"Tab",
+		L"Q",
+		L"W",
+		L"E",
+		L"R",
+		L"T",
+		L"Y",
+		L"U",
+		L"I",
+		L"O",
+		L"P",
+		L"LeftBracket",
+		L"RightBracket",
+		L"Enter",
+		L"LeftCtrl",
+		L"A",
+		L"S",
+		L"D",
+		L"F",
+		L"G",
+		L"H",
+		L"J",
+		L"K",
+		L"L",
+		L"Semicolon",
+		L"Apostrophe",
+		L"Grave",
+		L"LeftShift",
+		L"BackSlash",
+		L"Z",
+		L"X",
+		L"C",
+		L"V",
+		L"B",
+		L"N",
+		L"M",
+		L"Comma",
+		L"Period",
+		L"Slash",
+		L"RightShift",
+		L"NumPadStar",
+		L"LeftAlt",
+		L"Space",
+		L"CapsLock",
+		L"F1",
+		L"F2",
+		L"F3",
+		L"F4",
+		L"F5",
+		L"F6",
+		L"F7",
+		L"F8",
+		L"F9",
+		L"F10",
+		L"NumLock",
+		L"ScrollLock",
+		L"NumPad7",
+		L"NumPad8",
+		L"NumPad9",
+		L"NumPadMinus",
+		L"NumPad4",
+		L"NumPad5",
+		L"NumPad6",
+		L"NumPadPlus",
+		L"NumPad1",
+		L"NumPad2",
+		L"NumPad3",
+		L"NumPad0",
+		L"NumPadPeriod",
+		L"OEM_102",
+		L"F11",
+		L"F12",
+		L"F13",
+		L"F14",
+		L"F15",
+		L"Kana",
+		L"ABNT_C1",
+		L"Convert",
+		L"NoConvert",
+		L"Yen",
+		L"ABNT_C2",
+		L"NumPadEquals",
+		L"PrevTrack",
+		L"AT",
+		L"Colon",
+		L"Underline",
+		L"Kanji",
+		L"Stop",
+		L"AX",
+		L"Unlabeled",
+		L"NextTrack",
+		L"NumPadEnter",
+		L"RightCtrl",
+		L"Mute",
+		L"Calculator",
+		L"PlayPause",
+		L"MediaStop",
+		L"VolumeDown",
+		L"VolumeUp",
+		L"WebHome",
+		L"NumPadComma",
+		L"NumPadSlash",
+		L"SysRQ",
+		L"RightAlt",
+		L"Pause",
+		L"Home",
+		L"UpArrow",
+		L"PageUp",
+		L"LeftArrow",
+		L"RightArrow",
+		L"End",
+		L"DownArrow",
+		L"PageDown",
+		L"Insert",
+		L"Delete",
+		L"LeftWin",
+		L"RightWin",
+		L"Apps",
+		L"Power",
+		L"Sleep",
+		L"Wake",
+		L"WebSearch",
+		L"WebFavorites",
+		L"WebRefresh",
+		L"WebStop",
+		L"WebForward",
+		L"WebBack",
+		L"MyComputer",
+		L"Mail",
+		L"MediaSelect"
+	};
+
+	std::wstring touch_name[] =
+	{
+		L"None",
+		L"Pan",
+		L"Tap",
+		L"Press",
+		L"PressAndTap",
+		L"Zoom",
+		L"Rotate",
+		L"Flick"
+
+	};
+	enum
+	{
+		KeyboardMsg,
+		MouseMsg,
+		JoystickMsg,
+		TouchMsg,
+		SensorMsg,
+
+		Exit
+	};
+	KlayGE::InputActionDefine actions[] =
+	{
+		InputActionDefine(KeyboardMsg, KS_AnyKey),
+
+		InputActionDefine(MouseMsg, MS_X),
+		InputActionDefine(MouseMsg, MS_Y),
+		InputActionDefine(MouseMsg, MS_Z),
+		InputActionDefine(MouseMsg, MS_AnyButton),
+
+		InputActionDefine(JoystickMsg, JS_LeftThumbX),
+		InputActionDefine(JoystickMsg, JS_LeftThumbY),
+		InputActionDefine(JoystickMsg, JS_LeftThumbZ),
+		InputActionDefine(JoystickMsg, JS_RightThumbX),
+		InputActionDefine(JoystickMsg, JS_RightThumbY),
+		InputActionDefine(JoystickMsg, JS_RightThumbZ),
+		InputActionDefine(JoystickMsg, JS_LeftTrigger),
+		InputActionDefine(JoystickMsg, JS_RightTrigger),
+		InputActionDefine(JoystickMsg, JS_AnyButton),
+
+		InputActionDefine(TouchMsg, TS_Pan),
+		InputActionDefine(TouchMsg, TS_Tap),
+		InputActionDefine(TouchMsg, TS_Press),
+		InputActionDefine(TouchMsg, TS_PressAndTap),
+		InputActionDefine(TouchMsg, TS_Zoom),
+		InputActionDefine(TouchMsg, TS_Rotate),
+		InputActionDefine(TouchMsg, TS_Flick),
+		InputActionDefine(TouchMsg, TS_Wheel),
+		InputActionDefine(TouchMsg, TS_AnyTouch),
+
+		InputActionDefine(SensorMsg, SS_AnySensing),
+
+		InputActionDefine(Exit, KS_Escape)
+	};
+}
+
+
+int main()
+{
+	std::string klaygePath = KLAYGE_ROOT;
+	std::string klaygebinraryPath = KLAYGE_BINARY_ROOT;
+	std::string current_source_dir = CURRENT_SOURCE_DIR;
+	KlayGE::ResLoader::Instance().AddPath(klaygePath + "/KlayGE/Samples/Media/Common");
+	KlayGE::ResLoader::Instance().AddPath(current_source_dir);
+	
+	// 从KlayGE.cfg中读取配置信息。各个功能模块，诸如RenderFactory，AudioFactory等都会在这一过程中被初始化
+	KlayGE::Context::Instance().LoadCfg(klaygebinraryPath + "/../KlayGE.cfg");
+	KlayGE::ContextCfg cfg = KlayGE::Context::Instance().Config();
+	cfg.location_sensor = true;
+	KlayGE::Context::Instance().Config(cfg);
+
+	InputCaps app;
+	app.Create();
+	app.Run();
+
+	return 0;
+}
+
+ 
+InputCaps::InputCaps():App3DFramework("InputCaps")
+{
+}
+
+ void InputCaps::OnCreate()
+ {
+	font_ = KlayGE::SyncLoadFont("gkai00mp.kfont");
+
+	this->LookAt(KlayGE::float3(2, 0, -2), KlayGE::float3(0, 0, 0));
+	this->Proj(0.1f, 100);
+	KlayGE::UIManager::Instance().Load(*KlayGE::ResLoader::Instance().Open("InputCaps.uiml"));
+	
+	KlayGE::InputEngine& inputEngine = KlayGE::Context::Instance().InputFactoryInstance().InputEngineInstance();
+	KlayGE::InputActionMap actionMap;
+	actionMap.AddActions(actions, actions + std::size(actions));
+	action_handler_t input_handler = MakeSharedPtr<input_signal>();
+	 input_handler->Connect(
+		[this](InputEngine const& sender, InputAction const& action)
+		{
+			this->InputHandler(sender, action);
+		});
+	inputEngine.ActionMap(actionMap, input_handler);
+
+	for (size_t i = 0; i < inputEngine.NumDevices(); ++i)
+	{
+		auto const& device = inputEngine.Device(i);
+		if (device->Type() == InputEngine::IDT_Joystick)
+		{
+			joystick_ = checked_pointer_cast<InputJoystick>(device);
+		}
+	}
+ }
+
+void InputCaps::OnResize(KlayGE::uint32_t width, KlayGE::uint32_t height)
+{
+	App3DFramework::OnResize(width, height);
+	KlayGE::UIManager::Instance().SettleCtrls();
+}
+
+void InputCaps::DoUpdateOverlay()
+{
+	KlayGE::UIManager::Instance().Render();
+
+	KlayGE::RenderEngine& renderEngine(KlayGE::Context::Instance().RenderFactoryInstance().RenderEngineInstance());
+
+	std::wostringstream stream;
+	stream.precision(2);
+	stream << std::fixed << this->FPS() << " FPS";
+
+	font_->RenderText(0, 0, KlayGE::Color(1, 1, 0, 1), L"Input Caps", 16);
+	font_->RenderText(0, 18, KlayGE::Color(1, 1, 0, 1), stream.str(), 16);
+	//font_->RenderText(0, 36,  KlayGE::Color(1, 1, 0, 1), renderEngine.Name(), 16);
+
+	font_->RenderText(0, 72, KlayGE::Color(1, 1, 1, 1), L"Keyboard: ", 24);
+	font_->RenderText(128, 72, KlayGE::Color(1, 1, 1, 1), key_str_, 24);
+
+	font_->RenderText(0, 99, KlayGE::Color(1, 1, 1, 1), L"Mouse: ", 24);
+	font_->RenderText(128, 99, KlayGE::Color(1, 1, 1, 1), mouse_str_, 24);
+
+	font_->RenderText(0, 126, KlayGE::Color(1, 1, 1, 1), L"Joystick: ", 24);
+	font_->RenderText(128, 126, KlayGE::Color(1, 1, 1, 1), joystick_str_, 24);
+
+	font_->RenderText(0, 153, KlayGE::Color(1, 1, 1, 1), L"Touch: ", 24);
+	font_->RenderText(128, 153, KlayGE::Color(1, 1, 1, 1), touch_str_, 24);
+
+	font_->RenderText(0, 180, KlayGE::Color(1, 1, 1, 1), L"Sensor: ", 24);
+	font_->RenderText(128, 180, KlayGE::Color(1, 1, 1, 1), sensor_str_, 24);
+}
+
+KlayGE::uint32_t InputCaps::DoUpdate(KlayGE::uint32_t pass)
+{
+	KlayGE::RenderEngine& renderEngine(KlayGE::Context::Instance().RenderFactoryInstance().RenderEngineInstance());
+
+#define USE_OSG_CLEAR 1
+#if USE_OSG_CLEAR
+	KlayGE::Color clear_clr(0.2f, 0.2f, 0.6f, 1);
+	if (KlayGE::Context::Instance().Config().graphics_cfg.gamma)
+	{
+		float gamma = 2.2f;
+		clear_clr.r() = pow(0.26f, gamma);
+		clear_clr.g() = pow(0.26f, gamma);
+		clear_clr.b() = pow(0.425f, gamma);
+
+	}
+#else
+	KlayGE::Color clear_clr(0.2f, 0.4f, 0.6f, 1);
+	if (KlayGE::Context::Instance().Config().graphics_cfg.gamma)
+	{
+		clear_clr.r() = 0.029f;
+		clear_clr.g() = 0.133f;
+		clear_clr.b() = 0.325f;
+	}
+#endif 
+	renderEngine.CurFrameBuffer()->Clear(KlayGE::FrameBuffer::CBM_Color | KlayGE::FrameBuffer::CBM_Depth, clear_clr, 1.0f, 0);
+	return App3DFramework::URV_NeedFlush | App3DFramework::URV_Finished;
+}
+
+void InputCaps::InputHandler(KlayGE::InputEngine const& sender, KlayGE::InputAction const& action)
+{
+	switch (action.first)
+	{
+		case KeyboardMsg:
+		{
+			key_str_.clear();
+			InputKeyboardActionParamPtr param = checked_pointer_cast<InputKeyboardActionParam>(action.second);
+			for (uint32_t i = 0; i < 0xEF; ++i)
+			{
+				if (param->buttons_state[i])
+				{
+					key_str_ += key_name[i] + L' ';
+				}
+			}
+		}
+		break;
+
+		case MouseMsg:
+		{
+			InputMouseActionParamPtr param = checked_pointer_cast<InputMouseActionParam>(action.second);
+			std::wostringstream stream;
+			stream << param->abs_coord.x() << ' ' << param->abs_coord.y() << ' ';
+			stream << param->move_vec.x() << ' ' << param->move_vec.y() << ' ' << param->wheel_delta << ' ';
+			for (uint32_t i = 0; i < 8; ++i)
+			{
+				if (param->buttons_state & (1UL << i))
+				{
+					stream << "button" << i << L' ';
+				}
+			}
+			mouse_str_ = stream.str();
+		}
+		break;
+
+		case JoystickMsg:
+		{
+			InputJoystickActionParamPtr param = checked_pointer_cast<InputJoystickActionParam>(action.second);
+			std::wostringstream stream;
+			stream << param->thumbs[0].x() << ' ' << param->thumbs[0].y() << ' ' << param->thumbs[0].z() << ' ';
+			stream << param->thumbs[1].x() << ' ' << param->thumbs[1].y() << ' ' << param->thumbs[1].z() << ' ';
+			stream << param->triggers[0] << ' ' << param->triggers[1] << ' ';
+			for (uint32_t i = 0; i < 16; ++i)
+			{
+				if (param->buttons_state & (1UL << i))
+				{
+					stream << "button" << i << L' ';
+				}
+			}
+			joystick_str_ = stream.str();
+
+			if (joystick_)
+			{
+				for (uint32_t i = 0; (i < joystick_->NumVibrationMotors()) && (i < 2); ++i)
+				{
+					joystick_->VibrationMotorSpeed(i, param->triggers[i]);
+				}
+			}
+		}
+		break;
+
+		case TouchMsg:
+		{
+			InputTouchActionParamPtr param = checked_pointer_cast<InputTouchActionParam>(action.second);
+			std::wostringstream stream;
+			stream << touch_name[param->gesture - 0x300] << ' ';
+			if (param->gesture != TS_None)
+			{
+				stream << "center " << param->center.x() << ' ' << param->center.y() << ' ';
+				switch (param->gesture)
+				{
+				case TS_Pan:
+				case TS_Tap:
+				case TS_Flick:
+					stream << "move " << param->move_vec.x() << ' ' << param->move_vec.y() << ' ';
+					break;
+
+				case TS_Zoom:
+					stream << "factor " << param->zoom << ' ';
+					break;
+
+				case TS_Rotate:
+					stream << "angle " << param->rotate_angle << ' ';
+					break;
+
+				default:
+					break;
+				}
+			}
+			if (param->wheel_delta != 0)
+			{
+				stream << "Wheel " << param->wheel_delta << ' ';
+			}
+			for (uint32_t i = 0; i < 16; ++i)
+			{
+				if (param->touches_down & (1UL << i))
+				{
+					stream << "Touch" << i << L" Down ";
+				}
+				if (param->touches_up & (1UL << i))
+				{
+					stream << "Touch" << i << L" Up ";
+				}
+			}
+			touch_str_ = stream.str();
+		}
+		break;
+
+		case SensorMsg:
+		{
+			InputSensorActionParamPtr param = checked_pointer_cast<InputSensorActionParam>(action.second);
+			std::wostringstream stream;
+			stream << "Lat: " << param->latitude << "  Lng: " << param->longitude;
+			stream << " Orientation: " << param->orientation_quat.x() << ' ' << param->orientation_quat.y()
+				<< ' ' << param->orientation_quat.z() << ' ' << param->orientation_quat.w();
+			sensor_str_ = stream.str();
+		}
+		break;
+
+	case Exit:
+		this->Quit();
+		break;
+	}
+}

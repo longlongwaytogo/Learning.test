@@ -21,7 +21,7 @@ void TutorFramework::OnCreate()
         KlayGE::Color boxColor(1.0f, 0.0f, 0.0f, 1.0f);
 
         /*
-        构建一个场景节点，并使用AddToSceneManager将其添加到场景管理器中，从而在窗口中进行渲染
+        构建一个场景节点，并使用添加到场景管理器中，从而在窗口中进行渲染
         SceneObjectHelper的传入参数除了辅助几何体的实例以外，还有一个属性参数，它的取值可以为：
         SOA_Cullable：这个对象参与裁减。即，当它位于视锥体之外时，它会被自动排除出渲染队列之外，从而降低渲染负担。
                       如果没有设置这一参数，那么系统将总是渲染这个对象，无论它是否在可见区域之内
@@ -33,7 +33,7 @@ void TutorFramework::OnCreate()
             KlayGE::MakeSharedPtr<KlayGE::RenderableComponent>(
                 KlayGE::MakeSharedPtr<KlayGE::RenderableTriBox>(boxRange, boxColor)),
             KlayGE::SceneNode::SOA_Cullable);
-        root_node.AddChild(renderableBox_);
+      //  root_node.AddChild(renderableBox_);
     }
    
     { // load mesh from file
@@ -123,7 +123,7 @@ void TutorFramework::OnCreate()
         //将几何模型传递给场景对象，加入到场景当中
         for (size_t i = 0; i < meshes.size(); ++i)
         {
-            renderableMesh_->AddComponent(KlayGE::MakeSharedPtr<KlayGE::RenderableComponent>(meshes[i]));
+           renderableMesh_->AddComponent(KlayGE::MakeSharedPtr<KlayGE::RenderableComponent>(meshes[i]));
         }
        root_node.AddChild(renderableMesh_);
     }
@@ -132,9 +132,9 @@ void TutorFramework::OnCreate()
     {
         std::vector<KlayGE::float3> vertices;
         vertices.emplace_back(0.0f, 0.0f, 0.0f); // origin
-        vertices.emplace_back(1.0f, 0.0f, 0.0f); // +x;
-        vertices.emplace_back(0.0f, 1.0f, 0.0f); // +y;
-        vertices.emplace_back(0.0f, 0.0f, 1.0f); // +z;
+        vertices.emplace_back(2.0f, 0.0f, 0.0f); // +x;
+        vertices.emplace_back(0.0f, 2.0f, 0.0f); // +y;
+        vertices.emplace_back(0.0f, 0.0f, 2.0f); // +z;
      
         KlayGE::RenderModelPtr axis = KlayGE::MakeSharedPtr<KlayGE::RenderModel>(L"Axis", KlayGE::SceneNode::SOA_Cullable);
         std::vector<KlayGE::uint16_t> indices;
@@ -143,15 +143,22 @@ void TutorFramework::OnCreate()
         indices.push_back(0); indices.push_back(3);
        
 
-        KlayGE::StaticMeshPtr mesh =  KlayGE::MakeSharedPtr<RenderLine>(L"axis");
+        std::vector<KlayGE::StaticMeshPtr> meshes(2);
+        meshes[0] = KlayGE::MakeSharedPtr<RenderLine>(L"axis");
+        KlayGE::StaticMeshPtr& mesh = meshes[0];
         mesh->NumLods(1);
         mesh->AddVertexStream(0, &vertices[0], static_cast<KlayGE::uint32_t>(sizeof(vertices[0])* vertices.size()),
             KlayGE::VertexElement(KlayGE::VEU_Position, 0, KlayGE::EF_BGR32F), KlayGE::EAH_GPU_Read);
         mesh->AddIndexStream(0, &indices[0], static_cast<KlayGE::uint32_t>(sizeof(indices[0])* indices.size()),
             KlayGE::EF_R16UI, KlayGE::EAH_GPU_Read);
         mesh->GetRenderLayout().TopologyType(KlayGE::RenderLayout::TT_LineList);
-        mesh->PosBound(KlayGE::AABBox(KlayGE::float3(0,0,0), KlayGE::float3(1, 1, 1)));
+        mesh->PosBound(KlayGE::AABBox(KlayGE::float3(0,0,0), KlayGE::float3(2, 2, 2)));
         mesh->BuildMeshInfo(*axis);
+
+        // 将所有的网格对象传递给RenderModel几何模型
+        axis->AssignMeshes(meshes.begin(),meshes.end());
+        axis->BuildModelInfo();
+
         renderableAxis_ = axis->RootNode();
         renderableAxis_->AddComponent(KlayGE::MakeSharedPtr<KlayGE::RenderableComponent>(mesh));
         root_node.AddChild(renderableAxis_);
@@ -190,9 +197,9 @@ KlayGE::uint32_t TutorFramework::DoUpdate(KlayGE::uint32_t pass)
     if (KlayGE::Context::Instance().Config().graphics_cfg.gamma)
     {
         float gamma = 2.2f;
-        clear_clr.r() = pow(0.20f, gamma);
-        clear_clr.g() = pow(0.20f, gamma);
-        clear_clr.b() = pow(0.40f, gamma);
+        clear_clr.r() = pow(0.26f, gamma);
+        clear_clr.g() = pow(0.26f, gamma);
+        clear_clr.b() = pow(0.425f, gamma);
 
     }
 #else

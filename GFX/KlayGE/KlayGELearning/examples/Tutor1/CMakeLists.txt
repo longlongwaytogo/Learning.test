@@ -8,5 +8,6 @@ TutorFramework.cpp
                                                VS_DEBUGGER_COMMAND           "$<TARGET_FILE:${TargetName}>"
                                                VS_DEBUGGER_ENVIRONMENT       "${MY_PATH}")
 
-	SET_PROPERTY(TARGET ${TargetName} PROPERTY FOLDER ${package})
+
+	SET_PROPERTY(TARGET ${TargetName} PROPERTY FOLDER Tutorials)
 	# SET_TARGET_PROPERTIES(${TargetName} PROPERTIES VS_DEBUGGER_ENVIRONMENT "${MY_PATH}")

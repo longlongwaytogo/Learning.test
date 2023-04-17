@@ -16,7 +16,7 @@ class TutorFramework : public KlayGE::App3DFramework
 {
 public:
 	TutorFramework();
-protected:
+private:
 	//virtual void InitObjects();
 	virtual void OnCreate();
 private:
