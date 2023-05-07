@@ -1,8 +1,9 @@
-#include <iostream>
+﻿#include <iostream>
 //#include <algorithm>
 #include <algorithm>
 #include <vector> 
 #include <functional>
+#include <typeinfo>
 using namespace std;
 
 
@@ -65,5 +66,10 @@ int main()
 	 }
 	 
 	 
+	 
+	 {
+		 auto i = true ? 5: 8.0;
+		 cout << typeid(i).name() <<":" <<i << endl;
+	 }
 	return 0;
 }
