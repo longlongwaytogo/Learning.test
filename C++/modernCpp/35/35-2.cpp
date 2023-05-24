@@ -6,6 +6,7 @@ void foo(Args ...arg){
     (std::cout <<... << arg) <<std::endl; 
 }
 
+
 int main()
 
 {
