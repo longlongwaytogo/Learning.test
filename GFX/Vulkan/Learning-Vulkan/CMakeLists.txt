@@ -21,3 +21,4 @@ endif()
 
 
 add_subdirectory(3_0_DeviceHandshake)
+add_subdirectory(4_DebugVulkan)
