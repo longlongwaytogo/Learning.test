@@ -14,3 +14,4 @@ public:
 public:
 	VkResult createInstance(std::vector<const char*>& layers, std::vector<const char*>& extensionNames, const char* applicationName);
 	void destroyInstance();
+};

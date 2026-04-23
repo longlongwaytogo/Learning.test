@@ -6,7 +6,7 @@
 #define NOMINMAX
 #define APP_NAME_STR_LEN 80
 #define _CRT_SECURE_NO_WARNINGS
-#eles // _WIN32
+#else // _WIN32
 #define VK_USE_PLATFORM_XCB_KHR
 #include <unistd.h>
 #endif //_WIN32

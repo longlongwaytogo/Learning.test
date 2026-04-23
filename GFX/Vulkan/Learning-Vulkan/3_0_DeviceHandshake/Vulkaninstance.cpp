@@ -1,11 +1,12 @@
-#includ "VulkanInstance.h"
+#include "VulkanInstance.h"
 VkResult VulkanInstance::createInstance(std::vector<const char*>& layers, std::vector<const char*>& extensionNames, const char* applicationName)
 {
-	layerExtension.appRequestedExtensionNames = extensionNames;
-	layerExtension.appRequestLayerNames = layers;
-	
+
+	layerExtension.appRequestedExtensionNames	= extensionNames;
+	layerExtension.appRequestedLayerNames		= layers;
+
 	VkApplicationInfo appInfo = {};
-	appInfo.sType = VK_STRUCT_TYPE_APPLICATION_INFO;
+	appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 	appInfo.pNext = NULL;
 	appInfo.pApplicationName = applicationName;
 	appInfo.applicationVersion = 1;
@@ -13,9 +14,24 @@ VkResult VulkanInstance::createInstance(std::vector<const char*>& layers, std::v
 	appInfo.engineVersion = 1;
 	appInfo.apiVersion = VK_MAKE_VERSION(1,0,0);
 	
+	// Define the Vulkan instance create info structure 
 	VkInstanceCreateInfo instInfo = {};
-	instInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CRATE_INFO;
-	instInfo.pNext
+	instInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+	instInfo.pNext = NULL;
+	instInfo.flags = 0;
+	instInfo.pApplicationInfo = &appInfo;
+
+	instInfo.enabledExtensionCount	= (uint32_t)extensionNames.size();
+	instInfo.ppEnabledExtensionNames = extensionNames.size() ? extensionNames.data() : NULL;
+
+	instInfo.enabledLayerCount		= (uint32_t)layers.size();
+	instInfo.ppEnabledLayerNames	= layers.size() ? layers.data() : NULL;
+
+
+	VkResult result = vkCreateInstance(&instInfo, NULL, &instance);
+	assert(result == VK_SUCCESS);
+
+	return result;
 	
 }
 void VulkanInstance::destroyInstance()

@@ -25,10 +25,10 @@ public:
 private:
 	VkResult createVulkanInstance(std::vector<const char*>& layers, std::vector<const char*>& extensions,const char* applicationName);
 	VkResult handShakeWithDevice(VkPhysicalDevice* gpu, std::vector<const char*>& layers,std::vector<const char*> extensions);
-	VkResult enumratePhysicalDevices(std::vector<VkPhysicalDevice>& gpus);
+	VkResult enumeratePhysicalDevices(std::vector<VkPhysicalDevice>& gpus);
 	
 public:
-	VulkanInstance instnaceObj;
+	VulkanInstance instanceObj;
 	VulkanDevice* deviceObj;
 	
 };
