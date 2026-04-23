@@ -86,6 +86,17 @@ VkResult VulkanApplication::handShakeWithDevice(VkPhysicalDevice* gpu, std::vect
    	deviceObj->layerExtension.getDeviceExtensionProperties(gpu);
    
 
+    vkGetPhysicalDeviceProperties(*gpu, &deviceObj->gpuProps);
+
+    vkGetPhysicalDeviceMemoryProperties(*gpu, &deviceObj->memoryProperties);
+
+    deviceObj->getPhysicalDeviceQueuesAndProperties();
+
+    deviceObj->getGraphicsQueueHandle();
+
+    deviceObj->createDevice(layers, extensions);
+
+
     return VkResult::VK_SUCCESS;
 }
                             

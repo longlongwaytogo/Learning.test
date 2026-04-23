@@ -17,7 +17,7 @@ public:
     uint32_t getGraphicsQueueHandle();
 
 public:
-    VkDevice localdevice; // Logical device
+    VkDevice device; // Logical device
     VkPhysicalDevice* gpu;
     VkPhysicalDeviceProperties gpuProps; // Physical device attributes
     VkPhysicalDeviceMemoryProperties memoryProperties;

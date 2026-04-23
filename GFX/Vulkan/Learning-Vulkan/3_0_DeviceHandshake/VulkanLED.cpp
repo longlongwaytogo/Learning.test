@@ -33,18 +33,7 @@ VkResult VulkanLayerAndExtension::getInstanceLayerProperties() {
         LayerProperties layerProps;
         layerProps.properties = layer;
 
-        // Get the extensions for this layer
-        uint32_t extensionCount = 0;
-        result = vkEnumerateInstanceExtensionProperties(layer.layerName, &extensionCount, nullptr);
-        if (result != VK_SUCCESS) {
-            return result;
-        }
-
-        layerProps.extensions.resize(extensionCount);
-        result = vkEnumerateInstanceExtensionProperties(layer.layerName, &extensionCount, layerProps.extensions.data());
-        if (result != VK_SUCCESS) {
-            return result;
-        }
+        result = getExtensionProperties(layerProps);
 
         layerPropertyList.push_back(layerProps);
         // Print extension name for each instance layer
@@ -59,32 +48,46 @@ VkResult VulkanLayerAndExtension::getInstanceLayerProperties() {
 
 VkResult VulkanLayerAndExtension::getExtensionProperties(LayerProperties& layerProps, VkPhysicalDevice* gpu)
 {
+    uint32_t extensionCount = 0;
+    VkResult result;
+    char* layerName = layerProps.properties.layerName;
+    do 
+    {
+        if (gpu)
+        {
+            result = vkEnumerateDeviceExtensionProperties(*gpu, layerName, &extensionCount, nullptr);
+        }
+        else
+        {
+            result = vkEnumerateInstanceExtensionProperties(layerName, &extensionCount, nullptr);
+        }
+        if(result || extensionCount == 0)
+            continue;
+        layerProps.extensions.resize(extensionCount);
+           
+        if (gpu)
+        {
+            result = vkEnumerateDeviceExtensionProperties(*gpu, layerName, &extensionCount, layerProps.extensions.data());
+        }
+        else
+        {
+            result = vkEnumerateInstanceExtensionProperties(layerName, &extensionCount, layerProps.extensions.data());
+        }
+
+    } while (result == VK_INCOMPLETE);
+
     return VK_SUCCESS;
 }
 		
 VkResult VulkanLayerAndExtension::getDeviceExtensionProperties(VkPhysicalDevice* gpu)
 {
     VkResult result = VK_SUCCESS;
-    uint32_t extensionCount = 0;
-    result = vkEnumerateDeviceExtensionProperties(*gpu, nullptr, &extensionCount, nullptr);
-
-    if (result != VK_SUCCESS) {
-        return result;
-    }
-    std::cout << "\nDevice Extensions" << std::endl;
-    std::cout << "===================" << std::endl;
-    std::vector<VkExtensionProperties> availableExtensions(extensionCount);
-    result = vkEnumerateDeviceExtensionProperties(*gpu, nullptr, &extensionCount, availableExtensions.data());
-    if (result != VK_SUCCESS) {
-        return result;
-    }
-
-    for(const auto& ext : availableExtensions) {
-        std::cout << "\t|--- " << ext.extensionName << "\n";
-    }
-
-    VulkanApplication* appObj = VulkanApplication::GetInstance();
+	// Query all the extensions for each layer and store it.
+	std::cout << "Device extensions" << std::endl;
+	std::cout << "===================" << std::endl;
+	VulkanApplication* appObj = VulkanApplication::GetInstance();
 	std::vector<LayerProperties>* instanceLayerProp = &appObj->GetInstance()->instanceObj.layerExtension.layerPropertyList;
+
 	for (auto globalLayerProp : *instanceLayerProp) {
 		LayerProperties layerProps;
 		layerProps.properties = globalLayerProp.properties;
