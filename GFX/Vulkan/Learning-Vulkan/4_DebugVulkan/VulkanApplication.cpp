@@ -39,6 +39,24 @@ void VulkanApplication::initialze()
 	std::vector<VkPhysicalDevice> gpuList;
 	enumeratePhysicalDevices(gpuList);
 
+    for(int i = 0; i < gpuList.size(); i++){
+        const auto& gpu  = gpuList[i];
+        VkPhysicalDeviceProperties props;
+        vkGetPhysicalDeviceProperties(gpu, &props);
+        std::cout << "\n====================\n";
+        std::cout << "GPU device index: " << gpu << std::endl;
+        std::cout << "vondor ID: " << props.vendorID << std::endl;
+        std::cout << "device ID: " << props.deviceID << std::endl;
+        std::cout << "GPU Name: " << props.deviceName << std::endl;
+        std::cout << "Driver version: " << props.driverVersion << std::endl;
+        std::cout << "Vulkan version: " << VK_VERSION_MAJOR(props.apiVersion) << "."
+                << VK_VERSION_MINOR(props.apiVersion) << "."
+                << VK_VERSION_PATCH(props.apiVersion) << std::endl;
+        std::cout << "device type: " << props.deviceType << std::endl;
+        std::cout << "pipelineCacheUUID: " << props.pipelineCacheUUID << std::endl;
+        
+        std::cout << "====================\n";
+    }
 	// This example use only one device which is available first.
 	if (gpuList.size() > 0) {
 		handShakeWithDevice(&gpuList[0], layerNames, deviceExtensionNames);
