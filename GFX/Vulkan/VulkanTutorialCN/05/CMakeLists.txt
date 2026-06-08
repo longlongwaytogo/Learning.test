@@ -1,0 +1,1 @@
+add_vulkan_example(05-framework main.cpp)
