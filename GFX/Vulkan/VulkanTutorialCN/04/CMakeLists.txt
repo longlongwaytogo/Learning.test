@@ -1,0 +1,1 @@
+add_vulkan_example(04-glfw-vulkan main.cpp)

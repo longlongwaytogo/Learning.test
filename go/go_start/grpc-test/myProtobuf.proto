@@ -1,0 +1,30 @@
+syntax = "proto3" ;
+
+package myproto ;      //上面注释掉是因为报错 参考https://www.cnblogs.com/tomtellyou/p/12936651.html这篇文章第七点#https://learnku.com/articles/43758
+option go_package = ".;protoes"; 
+
+//定义服务 
+service HelloServer {
+  rpc SayHello (HelloReq) returns (HelloRsp){}
+  rpc SayName (NameReq) returns (NameRsp){}
+}
+
+//客户端发送给服务端
+message HelloReq {
+  string name = 1 ;
+}
+
+//服务端返回给客户端
+message HelloRsp {
+  string msg = 1 ;
+}
+
+//客户端发送给服务端
+message NameReq {
+  string name = 1 ;
+}
+
+//服务端返回给客户端
+message NameRsp {
+  string msg = 1 ;
+}
