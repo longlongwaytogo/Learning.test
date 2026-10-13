@@ -1,0 +1,5 @@
+https://tskysheep.github.io/LearnModernCpp/docs/intro/
+cmake 
+4 :https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/README_GitBook.html
+https://cmake.com.cn/cmake/help/latest/guide/tutorial/Configuration%20and%20Cache%20Variables.html#exercise-2-cmake-variables
+https://cmake.com.cn/cmake/help/latest/guide/tutorial/Getting%20Started%20with%20CMake.html#exercise-1-building-an-executable
